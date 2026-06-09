@@ -591,29 +591,24 @@
     <div class="form-row">
       <div class="form-group">
         <label for="nominal">Nominal (Rp)</label>
-        <input type="number" id="nominal" placeholder="cth: 50000" min="0" />
+        <input type="text" id="nominal" placeholder="cth: 50000" inputmode="numeric" maxlength="10" />
       </div>
       <div class="form-group">
         <label for="sumber">Sumber Pembayaran</label>
-        <input type="text" id="sumber" placeholder="cth: BCA Debit, Cash, GoPay" list="sumber-list" />
-        <datalist id="sumber-list">
-          <option value="Cash">
-          <option value="BCA Debit">
-          <option value="BRI Debit">
-          <option value="Mandiri Debit">
-          <option value="BCA CC">
-          <option value="BRI CC">
-          <option value="GoPay">
-          <option value="OVO">
-          <option value="Dana">
-          <option value="ShopeePay">
-          <option value="Transfer Bank">
-        </datalist>
+        <select id="sumber" onchange="handleSumberChange()">
+          <option value="" disabled selected>-- Pilih sumber --</option>
+          <option value="Cash">Cash</option>
+          <option value="CC Honest">CC Honest</option>
+          <option value="CC BCA">CC BCA</option>
+          <option value="QRIS/Debit">QRIS/Debit</option>
+          <option value="CC Tokped">CC Tokped</option>
+          <option value="Lain-lain">Lain-lain</option>
+        </select>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group full">
-        <label for="keterangan">Keterangan</label>
+        <label for="keterangan" id="keterangan-label">Keterangan</label>
         <textarea id="keterangan" placeholder="Keterangan pengeluaran..."></textarea>
       </div>
     </div>
@@ -680,7 +675,7 @@
 // ============================================================
 // GANTI URL INI dengan Web App URL dari Google Apps Script Anda
 // ============================================================
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyGIA11RoKG3SbMcoTkb1t5hh4GR6oAkveug2hs6W0WMtVwAlO20drD_HVJs5ByPqRq/exec';
+const SCRIPT_URL = 'GANTI_DENGAN_WEB_APP_URL_ANDA';
 
 let allTransactions = [];
 let monthlyLimit = 0;
@@ -700,6 +695,30 @@ function formatDate(str) {
 function currentMonthYear() {
   const now = new Date();
   return now.toLocaleDateString('id-ID', { month: 'long', year: 'numeric' });
+}
+
+// ---- BLOKIR HURUF DI NOMINAL ----
+document.getElementById('nominal').addEventListener('keypress', function(e) {
+  if (!/[0-9]/.test(e.key)) e.preventDefault();
+});
+document.getElementById('nominal').addEventListener('input', function() {
+  this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+});
+
+// ---- HANDLER SUMBER LAIN-LAIN ----
+function handleSumberChange() {
+  const sumber = document.getElementById('sumber').value;
+  const label = document.getElementById('keterangan-label');
+  const ket = document.getElementById('keterangan');
+  if (sumber === 'Lain-lain') {
+    label.textContent = 'Keterangan Sumber & Detail (wajib isi)';
+    ket.placeholder = 'Jelaskan sumber pembayaran dan detail pengeluaran...';
+    ket.style.borderColor = 'var(--amber-600)';
+  } else {
+    label.textContent = 'Keterangan';
+    ket.placeholder = 'Keterangan pengeluaran...';
+    ket.style.borderColor = '';
+  }
 }
 
 // ---- INIT ----
@@ -841,7 +860,8 @@ async function submitTransaction() {
   const keterangan = document.getElementById('keterangan').value.trim();
 
   if (!nominal || nominal <= 0) return showToast('Masukkan nominal yang valid.');
-  if (!sumber) return showToast('Sumber pembayaran wajib diisi.');
+  if (!sumber) return showToast('Pilih sumber pembayaran terlebih dahulu.');
+  if (sumber === 'Lain-lain' && !keterangan) return showToast('Keterangan wajib diisi untuk sumber Lain-lain.');
 
   const btn = document.getElementById('btn-submit');
   btn.disabled = true;
@@ -853,6 +873,9 @@ async function submitTransaction() {
       document.getElementById('nominal').value = '';
       document.getElementById('sumber').value = '';
       document.getElementById('keterangan').value = '';
+      document.getElementById('keterangan-label').textContent = 'Keterangan';
+      document.getElementById('keterangan').placeholder = 'Keterangan pengeluaran...';
+      document.getElementById('keterangan').style.borderColor = '';
       showToast('✓ Transaksi berhasil disimpan');
       await loadTransactions();
     } else {
