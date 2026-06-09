@@ -15,541 +15,161 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --blue-50: #E6F1FB;
-    --blue-200: #85B7EB;
-    --blue-600: #185FA5;
-    --blue-800: #0C447C;
-    --teal-50: #E1F5EE;
-    --teal-600: #0F6E56;
-    --teal-800: #085041;
-    --red-50: #FCEBEB;
-    --red-200: #F09595;
-    --red-600: #A32D2D;
-    --red-800: #791F1F;
-    --amber-50: #FAEEDA;
-    --amber-600: #854F0B;
-    --amber-800: #633806;
-    --gray-50: #F1EFE8;
-    --gray-100: #D3D1C7;
-    --gray-400: #888780;
-    --gray-600: #5F5E5A;
-    --gray-800: #444441;
-    --green-50: #EAF3DE;
-    --green-600: #3B6D11;
-    --green-800: #27500A;
+    --blue-50: #E6F1FB; --blue-200: #85B7EB; --blue-600: #185FA5; --blue-800: #0C447C;
+    --teal-50: #E1F5EE; --teal-600: #0F6E56; --teal-800: #085041;
+    --red-50: #FCEBEB; --red-200: #F09595; --red-600: #A32D2D; --red-800: #791F1F;
+    --amber-50: #FAEEDA; --amber-600: #854F0B; --amber-800: #633806;
+    --purple-50: #EEEDFE; --purple-600: #534AB7; --purple-800: #3C3489;
+    --coral-50: #FAECE7; --coral-600: #993C1D; --coral-800: #712B13;
+    --green-50: #EAF3DE; --green-600: #3B6D11; --green-800: #27500A;
+    --gray-50: #F1EFE8; --gray-100: #D3D1C7; --gray-400: #888780; --gray-600: #5F5E5A; --gray-800: #444441;
 
-    --bg: #F8F8F6;
-    --surface: #FFFFFF;
-    --surface-2: #F1EFE8;
-    --text-primary: #1A1A18;
-    --text-secondary: #5F5E5A;
-    --text-hint: #888780;
-    --border: rgba(0,0,0,0.1);
-    --border-strong: rgba(0,0,0,0.18);
-    --radius-md: 8px;
-    --radius-lg: 12px;
-    --radius-xl: 16px;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+    --bg: #F8F8F6; --surface: #FFFFFF; --surface-2: #F1EFE8;
+    --text-primary: #1A1A18; --text-secondary: #5F5E5A; --text-hint: #888780;
+    --border: rgba(0,0,0,0.1); --border-strong: rgba(0,0,0,0.18);
+    --radius-md: 8px; --radius-lg: 12px; --radius-xl: 16px;
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #1C1C1A;
-      --surface: #242422;
-      --surface-2: #2C2C2A;
-      --text-primary: #F0EFE8;
-      --text-secondary: #B4B2A9;
-      --text-hint: #888780;
-      --border: rgba(255,255,255,0.1);
-      --border-strong: rgba(255,255,255,0.18);
+      --bg: #1C1C1A; --surface: #242422; --surface-2: #2C2C2A;
+      --text-primary: #F0EFE8; --text-secondary: #B4B2A9; --text-hint: #888780;
+      --border: rgba(255,255,255,0.1); --border-strong: rgba(255,255,255,0.18);
     }
   }
 
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    min-height: 100vh;
-    padding: 0 0 3rem;
-  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text-primary); min-height: 100vh; padding: 0 0 3rem; }
 
-  .topbar {
-    background: var(--surface);
-    border-bottom: 0.5px solid var(--border);
-    padding: 1rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-
-  .topbar-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .topbar-icon {
-    width: 34px; height: 34px;
-    background: var(--blue-600);
-    border-radius: var(--radius-md);
-    display: flex; align-items: center; justify-content: center;
-    color: #fff;
-    font-size: 17px;
-  }
-
-  .topbar-title {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text-primary);
-  }
-
-  .topbar-sub {
-    font-size: 12px;
-    color: var(--text-hint);
-  }
-
-  .btn-icon {
-    background: none;
-    border: 0.5px solid var(--border-strong);
-    border-radius: var(--radius-md);
-    padding: 7px 12px;
-    font-size: 13px;
-    color: var(--text-secondary);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: background 0.15s;
-  }
-
+  .topbar { background: var(--surface); border-bottom: 0.5px solid var(--border); padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; }
+  .topbar-brand { display: flex; align-items: center; gap: 10px; }
+  .topbar-icon { width: 34px; height: 34px; background: var(--blue-600); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 17px; }
+  .topbar-title { font-size: 15px; font-weight: 500; color: var(--text-primary); }
+  .topbar-sub { font-size: 12px; color: var(--text-hint); }
+  .btn-icon { background: none; border: 0.5px solid var(--border-strong); border-radius: var(--radius-md); padding: 7px 12px; font-size: 13px; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 6px; transition: background 0.15s; }
   .btn-icon:hover { background: var(--surface-2); }
 
-  .container {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 1.5rem 1.25rem;
-  }
+  .container { max-width: 860px; margin: 0 auto; padding: 1.5rem 1.25rem; }
 
-  /* ===== LIMIT BANNER ===== */
-  .limit-banner {
-    border-radius: var(--radius-lg);
-    padding: 1rem 1.25rem;
-    margin-bottom: 1.25rem;
-    border: 0.5px solid var(--border);
-    background: var(--surface);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    transition: background 0.3s, border-color 0.3s;
-  }
-
-  .limit-banner.safe {
-    background: var(--teal-50);
-    border-color: rgba(15, 110, 86, 0.25);
-  }
-
-  .limit-banner.warning {
-    background: var(--amber-50);
-    border-color: rgba(133, 79, 11, 0.3);
-  }
-
-  .limit-banner.danger {
-    background: var(--red-50);
-    border-color: rgba(163, 45, 45, 0.3);
-  }
-
-  .limit-banner-icon {
-    font-size: 22px;
-    flex-shrink: 0;
-  }
-
+  .limit-banner { border-radius: var(--radius-lg); padding: 1rem 1.25rem; margin-bottom: 1.25rem; border: 0.5px solid var(--border); background: var(--surface); display: flex; align-items: center; gap: 1rem; transition: background 0.3s, border-color 0.3s; }
+  .limit-banner.safe { background: var(--teal-50); border-color: rgba(15,110,86,0.25); }
+  .limit-banner.warning { background: var(--amber-50); border-color: rgba(133,79,11,0.3); }
+  .limit-banner.danger { background: var(--red-50); border-color: rgba(163,45,45,0.3); }
+  .limit-banner-icon { font-size: 22px; flex-shrink: 0; }
   .limit-banner-body { flex: 1; }
-
-  .limit-banner-label {
-    font-size: 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 3px;
-  }
-
+  .limit-banner-label { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 3px; }
   .safe .limit-banner-label { color: var(--teal-600); }
   .warning .limit-banner-label { color: var(--amber-600); }
   .danger .limit-banner-label { color: var(--red-600); }
-
-  .limit-banner-main {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text-primary);
-  }
-
-  .limit-banner-sub {
-    font-size: 12px;
-    color: var(--text-secondary);
-    margin-top: 2px;
-  }
-
-  .progress-bar-wrap {
-    height: 5px;
-    background: rgba(0,0,0,0.08);
-    border-radius: 99px;
-    margin-top: 8px;
-    overflow: hidden;
-  }
-
-  .progress-bar-fill {
-    height: 100%;
-    border-radius: 99px;
-    transition: width 0.4s ease;
-  }
-
+  .limit-banner-main { font-size: 15px; font-weight: 500; color: var(--text-primary); }
+  .limit-banner-sub { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+  .progress-bar-wrap { height: 5px; background: rgba(0,0,0,0.08); border-radius: 99px; margin-top: 8px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; border-radius: 99px; transition: width 0.4s ease; }
   .safe .progress-bar-fill { background: var(--teal-600); }
   .warning .progress-bar-fill { background: var(--amber-600); }
   .danger .progress-bar-fill { background: var(--red-600); }
 
-  /* ===== CARDS GRID ===== */
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 12px;
-    margin-bottom: 1.25rem;
-  }
-
-  .stat-card {
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1rem 1.25rem;
-  }
-
-  .stat-card-label {
-    font-size: 12px;
-    color: var(--text-hint);
-    margin-bottom: 6px;
-  }
-
-  .stat-card-value {
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--text-primary);
-    line-height: 1.2;
-  }
-
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 1.25rem; }
+  .stat-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1rem 1.25rem; }
+  .stat-card-label { font-size: 12px; color: var(--text-hint); margin-bottom: 6px; }
+  .stat-card-value { font-size: 18px; font-weight: 500; color: var(--text-primary); line-height: 1.2; }
   .stat-card-value.red { color: var(--red-600); }
   .stat-card-value.teal { color: var(--teal-600); }
+  .stat-card-sub { font-size: 12px; color: var(--text-hint); margin-top: 3px; }
 
-  .stat-card-sub {
-    font-size: 12px;
-    color: var(--text-hint);
-    margin-top: 3px;
-  }
+  .breakdown-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1.25rem; }
+  .breakdown-card { border-radius: var(--radius-lg); padding: 0.9rem 1rem; border: 0.5px solid var(--border); }
+  .breakdown-card.suami { background: var(--blue-50); border-color: rgba(24,95,165,0.2); }
+  .breakdown-card.istri { background: var(--purple-50); border-color: rgba(83,74,183,0.2); }
+  .breakdown-card.anak { background: var(--green-50); border-color: rgba(59,109,17,0.2); }
+  .breakdown-avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; margin-bottom: 8px; }
+  .suami .breakdown-avatar { background: var(--blue-600); color: #fff; }
+  .istri .breakdown-avatar { background: var(--purple-600); color: #fff; }
+  .anak .breakdown-avatar { background: var(--green-600); color: #fff; }
+  .breakdown-name { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .suami .breakdown-name { color: var(--blue-600); }
+  .istri .breakdown-name { color: var(--purple-600); }
+  .anak .breakdown-name { color: var(--green-600); }
+  .breakdown-value { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+  .breakdown-count { font-size: 11px; color: var(--text-hint); margin-top: 2px; }
 
-  /* ===== FORM CARD ===== */
-  .form-card {
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.25rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .form-card-header {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 10px;
-  }
-
-  @media (max-width: 480px) {
-    .form-row { grid-template-columns: 1fr; }
-  }
-
+  .form-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1.25rem; }
+  .form-card-header { font-size: 14px; font-weight: 500; color: var(--text-secondary); margin-bottom: 1rem; display: flex; align-items: center; gap: 7px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+  @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } .breakdown-grid { grid-template-columns: repeat(3,1fr); } .breakdown-value { font-size: 12px; } }
   .form-group { display: flex; flex-direction: column; gap: 5px; }
-
   .form-group.full { grid-column: 1 / -1; }
-
-  label {
-    font-size: 12px;
-    color: var(--text-secondary);
-    font-weight: 500;
-  }
-
-  input, select, textarea {
-    background: var(--surface-2);
-    border: 0.5px solid var(--border-strong);
-    border-radius: var(--radius-md);
-    padding: 9px 12px;
-    font-size: 14px;
-    color: var(--text-primary);
-    font-family: inherit;
-    outline: none;
-    transition: border-color 0.15s, box-shadow 0.15s;
-    width: 100%;
-  }
-
-  input:focus, select:focus, textarea:focus {
-    border-color: var(--blue-600);
-    box-shadow: 0 0 0 3px rgba(24, 95, 165, 0.12);
-  }
-
+  label { font-size: 12px; color: var(--text-secondary); font-weight: 500; }
+  input, select, textarea { background: var(--surface-2); border: 0.5px solid var(--border-strong); border-radius: var(--radius-md); padding: 9px 12px; font-size: 14px; color: var(--text-primary); font-family: inherit; outline: none; transition: border-color 0.15s, box-shadow 0.15s; width: 100%; }
+  input:focus, select:focus, textarea:focus { border-color: var(--blue-600); box-shadow: 0 0 0 3px rgba(24,95,165,0.12); }
   textarea { resize: vertical; min-height: 64px; }
-
   select option { background: var(--surface); }
 
-  .btn-submit {
-    width: 100%;
-    background: var(--blue-600);
-    color: #fff;
-    border: none;
-    border-radius: var(--radius-md);
-    padding: 11px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    margin-top: 10px;
-    transition: background 0.15s, transform 0.1s;
-    font-family: inherit;
-  }
+  .anggota-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+  .anggota-pill { flex: 1; min-width: 70px; padding: 9px 8px; border-radius: var(--radius-md); border: 0.5px solid var(--border-strong); background: var(--surface-2); font-size: 13px; font-weight: 500; cursor: pointer; text-align: center; transition: all 0.15s; color: var(--text-secondary); }
+  .anggota-pill:hover { background: var(--blue-50); border-color: rgba(24,95,165,0.3); color: var(--blue-600); }
+  .anggota-pill.active-suami { background: var(--blue-50); border-color: var(--blue-600); color: var(--blue-800); }
+  .anggota-pill.active-istri { background: var(--purple-50); border-color: var(--purple-600); color: var(--purple-800); }
+  .anggota-pill.active-anak { background: var(--green-50); border-color: var(--green-600); color: var(--green-800); }
 
+  .btn-submit { width: 100%; background: var(--blue-600); color: #fff; border: none; border-radius: var(--radius-md); padding: 11px; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 10px; transition: background 0.15s, transform 0.1s; font-family: inherit; }
   .btn-submit:hover { background: var(--blue-800); }
   .btn-submit:active { transform: scale(0.99); }
   .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
-  /* ===== TABLE CARD ===== */
-  .table-card {
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-  }
-
-  .table-card-header {
-    padding: 1rem 1.25rem 0.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 0.5px solid var(--border);
-  }
-
-  .table-card-title {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    gap: 7px;
-  }
-
+  .table-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+  .table-card-header { padding: 1rem 1.25rem 0.75rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 0.5px solid var(--border); flex-wrap: wrap; gap: 8px; }
+  .table-card-title { font-size: 14px; font-weight: 500; color: var(--text-primary); display: flex; align-items: center; gap: 7px; }
   .table-wrap { overflow-x: auto; }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-  }
-
-  thead tr {
-    background: var(--surface-2);
-  }
-
-  th {
-    padding: 10px 14px;
-    text-align: left;
-    font-size: 11px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--text-hint);
-    border-bottom: 0.5px solid var(--border);
-    white-space: nowrap;
-  }
-
-  td {
-    padding: 11px 14px;
-    border-bottom: 0.5px solid var(--border);
-    color: var(--text-primary);
-    vertical-align: middle;
-  }
-
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead tr { background: var(--surface-2); }
+  th { padding: 10px 14px; text-align: left; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-hint); border-bottom: 0.5px solid var(--border); white-space: nowrap; }
+  td { padding: 11px 14px; border-bottom: 0.5px solid var(--border); color: var(--text-primary); vertical-align: middle; }
   tr:last-child td { border-bottom: none; }
-
   tbody tr:hover { background: var(--surface-2); }
 
-  .badge-sumber {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 500;
-    padding: 3px 9px;
-    border-radius: 99px;
-    background: var(--blue-50);
-    color: var(--blue-800);
-    border: 0.5px solid rgba(24, 95, 165, 0.2);
-  }
+  .badge-sumber { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 99px; background: var(--blue-50); color: var(--blue-800); border: 0.5px solid rgba(24,95,165,0.2); }
+  .badge-anggota { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 99px; }
+  .badge-anggota.suami { background: var(--blue-50); color: var(--blue-800); border: 0.5px solid rgba(24,95,165,0.2); }
+  .badge-anggota.istri { background: var(--purple-50); color: var(--purple-800); border: 0.5px solid rgba(83,74,183,0.2); }
+  .badge-anggota.anak { background: var(--green-50); color: var(--green-800); border: 0.5px solid rgba(59,109,17,0.2); }
+  .nominal-cell { font-weight: 500; color: var(--red-600); white-space: nowrap; }
+  .date-cell { color: var(--text-hint); white-space: nowrap; font-size: 12px; }
+  .btn-delete { background: none; border: 0.5px solid var(--border); border-radius: var(--radius-md); padding: 5px 8px; color: var(--text-hint); cursor: pointer; font-size: 13px; transition: background 0.15s, color 0.15s; }
+  .btn-delete:hover { background: var(--red-50); color: var(--red-600); border-color: rgba(163,45,45,0.3); }
 
-  .nominal-cell {
-    font-weight: 500;
-    color: var(--red-600);
-    white-space: nowrap;
-  }
+  .filter-bar { display: flex; gap: 6px; flex-wrap: wrap; }
+  .filter-btn { padding: 5px 12px; border-radius: 99px; border: 0.5px solid var(--border-strong); background: var(--surface-2); font-size: 12px; font-weight: 500; cursor: pointer; color: var(--text-secondary); transition: all 0.15s; font-family: inherit; }
+  .filter-btn:hover { background: var(--blue-50); color: var(--blue-600); }
+  .filter-btn.active { background: var(--blue-600); color: #fff; border-color: var(--blue-600); }
+  .filter-btn.active-istri { background: var(--purple-600); color: #fff; border-color: var(--purple-600); }
+  .filter-btn.active-anak { background: var(--green-600); color: #fff; border-color: var(--green-600); }
 
-  .date-cell { color: var(--text-hint); white-space: nowrap; }
+  .empty-state { padding: 3rem 1rem; text-align: center; color: var(--text-hint); }
+  .empty-state-icon { font-size: 32px; margin-bottom: 10px; opacity: 0.4; }
+  .empty-state-text { font-size: 14px; }
 
-  .btn-delete {
-    background: none;
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 5px 8px;
-    color: var(--text-hint);
-    cursor: pointer;
-    font-size: 13px;
-    transition: background 0.15s, color 0.15s;
-  }
-
-  .btn-delete:hover {
-    background: var(--red-50);
-    color: var(--red-600);
-    border-color: rgba(163, 45, 45, 0.3);
-  }
-
-  .empty-state {
-    padding: 3rem 1rem;
-    text-align: center;
-    color: var(--text-hint);
-  }
-
-  .empty-state-icon {
-    font-size: 32px;
-    margin-bottom: 10px;
-    opacity: 0.4;
-  }
-
-  .empty-state-text {
-    font-size: 14px;
-  }
-
-  /* ===== MODAL SETTING ===== */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-  }
-
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 100; align-items: center; justify-content: center; padding: 1rem; }
   .modal-overlay.open { display: flex; }
-
-  .modal {
-    background: var(--surface);
-    border-radius: var(--radius-xl);
-    padding: 1.5rem;
-    width: 100%;
-    max-width: 360px;
-    border: 0.5px solid var(--border);
-  }
-
-  .modal-title {
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .modal-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 1rem;
-  }
-
-  .btn-secondary {
-    flex: 1;
-    background: var(--surface-2);
-    color: var(--text-primary);
-    border: 0.5px solid var(--border-strong);
-    border-radius: var(--radius-md);
-    padding: 10px;
-    font-size: 14px;
-    cursor: pointer;
-    font-family: inherit;
-    transition: background 0.15s;
-  }
-
+  .modal { background: var(--surface); border-radius: var(--radius-xl); padding: 1.5rem; width: 100%; max-width: 360px; border: 0.5px solid var(--border); }
+  .modal-title { font-size: 16px; font-weight: 500; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+  .modal-actions { display: flex; gap: 8px; margin-top: 1rem; }
+  .btn-secondary { flex: 1; background: var(--surface-2); color: var(--text-primary); border: 0.5px solid var(--border-strong); border-radius: var(--radius-md); padding: 10px; font-size: 14px; cursor: pointer; font-family: inherit; transition: background 0.15s; }
   .btn-secondary:hover { background: var(--gray-100); }
-
-  .btn-primary {
-    flex: 1;
-    background: var(--blue-600);
-    color: #fff;
-    border: none;
-    border-radius: var(--radius-md);
-    padding: 10px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    font-family: inherit;
-    transition: background 0.15s;
-  }
-
+  .btn-primary { flex: 1; background: var(--blue-600); color: #fff; border: none; border-radius: var(--radius-md); padding: 10px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: inherit; transition: background 0.15s; }
   .btn-primary:hover { background: var(--blue-800); }
 
-  /* ===== TOAST ===== */
-  .toast {
-    position: fixed;
-    bottom: 1.5rem;
-    left: 50%;
-    transform: translateX(-50%) translateY(80px);
-    background: var(--gray-800);
-    color: #fff;
-    padding: 10px 18px;
-    border-radius: 99px;
-    font-size: 13px;
-    z-index: 200;
-    transition: transform 0.25s ease;
-    white-space: nowrap;
-  }
-
+  .toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--gray-800); color: #fff; padding: 10px 18px; border-radius: 99px; font-size: 13px; z-index: 200; transition: transform 0.25s ease; white-space: nowrap; }
   .toast.show { transform: translateX(-50%) translateY(0); }
-
-  .month-badge {
-    font-size: 12px;
-    color: var(--text-hint);
-    background: var(--surface-2);
-    border: 0.5px solid var(--border);
-    border-radius: 99px;
-    padding: 3px 10px;
-  }
+  .month-badge { font-size: 12px; color: var(--text-hint); background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 99px; padding: 3px 10px; }
 </style>
 </head>
 <body>
 
-<!-- TOPBAR -->
 <div class="topbar">
   <div class="topbar-brand">
     <div class="topbar-icon">💰</div>
     <div>
-      <div class="topbar-title">Catatan Pengeluaran</div>
+      <div class="topbar-title">Domi Catatan Keuangan</div>
       <div class="topbar-sub" id="current-month"></div>
     </div>
   </div>
@@ -571,12 +191,12 @@
     </div>
   </div>
 
-  <!-- STATS CARDS -->
+  <!-- STATS -->
   <div class="stats-grid">
     <div class="stat-card">
       <div class="stat-card-label">Total Pengeluaran</div>
       <div class="stat-card-value red" id="stat-total">Rp 0</div>
-      <div class="stat-card-sub" id="stat-month">bulan ini</div>
+      <div class="stat-card-sub">bulan ini</div>
     </div>
     <div class="stat-card">
       <div class="stat-card-label">Jumlah Transaksi</div>
@@ -590,11 +210,31 @@
     </div>
   </div>
 
-  <!-- FORM INPUT -->
-  <div class="form-card">
-    <div class="form-card-header">
-      ➕ <span>Catat Pengeluaran Baru</span>
+  <!-- BREAKDOWN PER ANGGOTA -->
+  <div class="breakdown-grid">
+    <div class="breakdown-card suami">
+      <div class="breakdown-avatar">👨</div>
+      <div class="breakdown-name">Suami</div>
+      <div class="breakdown-value" id="bd-suami">Rp 0</div>
+      <div class="breakdown-count" id="bd-suami-count">0 transaksi</div>
     </div>
+    <div class="breakdown-card istri">
+      <div class="breakdown-avatar">👩</div>
+      <div class="breakdown-name">Istri</div>
+      <div class="breakdown-value" id="bd-istri">Rp 0</div>
+      <div class="breakdown-count" id="bd-istri-count">0 transaksi</div>
+    </div>
+    <div class="breakdown-card anak">
+      <div class="breakdown-avatar">🧒</div>
+      <div class="breakdown-name">Anak</div>
+      <div class="breakdown-value" id="bd-anak">Rp 0</div>
+      <div class="breakdown-count" id="bd-anak-count">0 transaksi</div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-card">
+    <div class="form-card-header">➕ <span>Catat Pengeluaran Baru</span></div>
     <div class="form-row">
       <div class="form-group">
         <label for="nominal">Nominal (Rp)</label>
@@ -615,6 +255,16 @@
     </div>
     <div class="form-row">
       <div class="form-group full">
+        <label>Dicatat oleh</label>
+        <div class="anggota-pills">
+          <div class="anggota-pill" id="pill-suami" onclick="selectAnggota('Suami')">👨 Suami</div>
+          <div class="anggota-pill" id="pill-istri" onclick="selectAnggota('Istri')">👩 Istri</div>
+          <div class="anggota-pill" id="pill-anak" onclick="selectAnggota('Anak')">🧒 Anak</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group full">
         <label for="keterangan" id="keterangan-label">Keterangan</label>
         <textarea id="keterangan" placeholder="Keterangan pengeluaran..."></textarea>
       </div>
@@ -628,7 +278,12 @@
   <div class="table-card">
     <div class="table-card-header">
       <div class="table-card-title">📋 <span>Riwayat Transaksi</span></div>
-      <span class="month-badge" id="table-month-badge"></span>
+      <div class="filter-bar">
+        <button class="filter-btn active" id="filter-semua" onclick="setFilter('Semua')">Semua</button>
+        <button class="filter-btn" id="filter-suami" onclick="setFilter('Suami')">👨 Suami</button>
+        <button class="filter-btn" id="filter-istri" onclick="setFilter('Istri')">👩 Istri</button>
+        <button class="filter-btn" id="filter-anak" onclick="setFilter('Anak')">🧒 Anak</button>
+      </div>
     </div>
     <div class="table-wrap">
       <table>
@@ -636,20 +291,14 @@
           <tr>
             <th>Tanggal</th>
             <th>Nominal</th>
+            <th>Oleh</th>
             <th>Sumber</th>
             <th>Keterangan</th>
             <th></th>
           </tr>
         </thead>
         <tbody id="table-body">
-          <tr>
-            <td colspan="5">
-              <div class="empty-state">
-                <div class="empty-state-icon">📂</div>
-                <div class="empty-state-text">Memuat transaksi...</div>
-              </div>
-            </td>
-          </tr>
+          <tr><td colspan="6"><div class="empty-state"><div class="empty-state-icon">📂</div><div class="empty-state-text">Memuat transaksi...</div></div></td></tr>
         </tbody>
       </table>
     </div>
@@ -657,7 +306,7 @@
 
 </div>
 
-<!-- MODAL SETTING LIMIT -->
+<!-- MODAL LIMIT -->
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal">
     <div class="modal-title">⚙️ Pengaturan Limit Bulanan</div>
@@ -665,9 +314,7 @@
       <label for="input-limit">Limit Pengeluaran per Bulan (Rp)</label>
       <input type="number" id="input-limit" placeholder="cth: 5000000" min="0" />
     </div>
-    <div style="font-size:12px; color:var(--text-hint); margin-top:6px;">
-      Peringatan muncul saat pengeluaran mencapai 80% dari limit.
-    </div>
+    <div style="font-size:12px; color:var(--text-hint); margin-top:6px;">Peringatan muncul saat pengeluaran mencapai 80% dari limit.</div>
     <div class="modal-actions">
       <button class="btn-secondary" onclick="closeSetting()">Batal</button>
       <button class="btn-primary" onclick="saveLimit()">Simpan Limit</button>
@@ -675,44 +322,36 @@
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
-// ============================================================
-// GANTI URL INI dengan Web App URL dari Google Apps Script Anda
-// ============================================================
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyGIA11RoKG3SbMcoTkb1t5hh4GR6oAkveug2hs6W0WMtVwAlO20drD_HVJs5ByPqRq/exec';
 
 let allTransactions = [];
 let monthlyLimit = 0;
+let selectedAnggota = '';
+let activeFilter = 'Semua';
 
-// ---- FORMAT ----
-function formatRupiah(num) {
-  return 'Rp ' + Math.round(num).toLocaleString('id-ID');
-}
-
+function formatRupiah(num) { return 'Rp ' + Math.round(num).toLocaleString('id-ID'); }
 function formatDate(str) {
   const d = new Date(str);
   if (isNaN(d)) return str;
-  return d.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' })
-    + ' ' + d.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+  return d.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }) + ' ' + d.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+}
+function currentMonthYear() { return new Date().toLocaleDateString('id-ID', { month: 'long', year: 'numeric' }); }
+
+document.getElementById('nominal').addEventListener('keypress', function(e) { if (!/[0-9]/.test(e.key)) e.preventDefault(); });
+document.getElementById('nominal').addEventListener('input', function() { this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10); });
+
+function selectAnggota(val) {
+  selectedAnggota = val;
+  ['suami','istri','anak'].forEach(a => {
+    document.getElementById('pill-' + a).className = 'anggota-pill';
+  });
+  const key = val.toLowerCase();
+  document.getElementById('pill-' + key).className = 'anggota-pill active-' + key;
 }
 
-function currentMonthYear() {
-  const now = new Date();
-  return now.toLocaleDateString('id-ID', { month: 'long', year: 'numeric' });
-}
-
-// ---- BLOKIR HURUF DI NOMINAL ----
-document.getElementById('nominal').addEventListener('keypress', function(e) {
-  if (!/[0-9]/.test(e.key)) e.preventDefault();
-});
-document.getElementById('nominal').addEventListener('input', function() {
-  this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
-});
-
-// ---- HANDLER SUMBER LAIN-LAIN ----
 function handleSumberChange() {
   const sumber = document.getElementById('sumber').value;
   const label = document.getElementById('keterangan-label');
@@ -728,47 +367,49 @@ function handleSumberChange() {
   }
 }
 
-// ---- INIT ----
+function setFilter(val) {
+  activeFilter = val;
+  ['semua','suami','istri','anak'].forEach(a => {
+    const btn = document.getElementById('filter-' + a);
+    btn.className = 'filter-btn';
+  });
+  const key = val.toLowerCase();
+  const btn = document.getElementById('filter-' + key);
+  if (val === 'Semua') btn.className = 'filter-btn active';
+  else if (val === 'Istri') btn.className = 'filter-btn active-istri';
+  else if (val === 'Anak') btn.className = 'filter-btn active-anak';
+  else btn.className = 'filter-btn active';
+  renderTable();
+}
+
 window.onload = async function() {
   document.getElementById('current-month').textContent = currentMonthYear();
-  document.getElementById('table-month-badge').textContent = currentMonthYear();
   await loadConfig();
   await loadTransactions();
 };
 
-// ---- API CALL ----
 async function apiCall(body) {
-  const res = await fetch(SCRIPT_URL, {
-    method: 'POST',
-    body: JSON.stringify(body)
-  });
+  const res = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(body) });
   return await res.json();
 }
 
-// ---- LOAD CONFIG ----
 async function loadConfig() {
   try {
     const data = await apiCall({ action: 'getConfig' });
     monthlyLimit = parseFloat(data.limit) || 0;
     document.getElementById('input-limit').value = monthlyLimit || '';
-  } catch (e) {
-    console.error(e);
-  }
+  } catch(e) { console.error(e); }
 }
 
-// ---- LOAD TRANSACTIONS ----
 async function loadTransactions() {
   try {
     const data = await apiCall({ action: 'getTransactions' });
     allTransactions = data.transactions || [];
     renderTable();
     updateStats();
-  } catch (e) {
-    showToast('Gagal memuat transaksi. Periksa URL script.');
-  }
+  } catch(e) { showToast('Gagal memuat transaksi. Periksa URL script.'); }
 }
 
-// ---- FILTER BULAN INI ----
 function thisMonthTransactions() {
   const now = new Date();
   return allTransactions.filter(t => {
@@ -777,44 +418,51 @@ function thisMonthTransactions() {
   });
 }
 
-// ---- RENDER TABLE ----
+function anggotaClass(anggota) {
+  if (!anggota) return '';
+  return anggota.toLowerCase();
+}
+
 function renderTable() {
   const tbody = document.getElementById('table-body');
-  const rows = allTransactions;
+  let rows = allTransactions;
+  if (activeFilter !== 'Semua') rows = rows.filter(t => t.anggota === activeFilter);
 
   if (!rows.length) {
-    tbody.innerHTML = `<tr><td colspan="5">
-      <div class="empty-state">
-        <div class="empty-state-icon">📂</div>
-        <div class="empty-state-text">Belum ada transaksi. Mulai catat pengeluaran pertamamu!</div>
-      </div></td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state"><div class="empty-state-icon">📂</div><div class="empty-state-text">${activeFilter !== 'Semua' ? 'Tidak ada transaksi untuk ' + activeFilter : 'Belum ada transaksi.'}</div></div></td></tr>`;
     return;
   }
 
-  tbody.innerHTML = rows.map(t => `
-    <tr>
+  tbody.innerHTML = rows.map(t => {
+    const cls = anggotaClass(t.anggota);
+    const emoji = t.anggota === 'Suami' ? '👨' : t.anggota === 'Istri' ? '👩' : t.anggota === 'Anak' ? '🧒' : '';
+    return `<tr>
       <td class="date-cell">${formatDate(t.tanggal)}</td>
       <td class="nominal-cell">${formatRupiah(t.nominal)}</td>
+      <td><span class="badge-anggota ${cls}">${emoji} ${escHtml(t.anggota || '-')}</span></td>
       <td><span class="badge-sumber">${escHtml(t.sumber)}</span></td>
       <td style="color:var(--text-secondary)">${escHtml(t.keterangan)}</td>
-      <td>
-        <button class="btn-delete" onclick="deleteRow(${t.rowIndex})" title="Hapus">🗑</button>
-      </td>
-    </tr>
-  `).join('');
+      <td><button class="btn-delete" onclick="deleteRow(${t.rowIndex})" title="Hapus">🗑</button></td>
+    </tr>`;
+  }).join('');
 }
 
-function escHtml(str) {
-  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
+function escHtml(str) { return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
-// ---- UPDATE STATS & BANNER ----
 function updateStats() {
   const monthly = thisMonthTransactions();
   const total = monthly.reduce((s, t) => s + parseFloat(t.nominal || 0), 0);
 
   document.getElementById('stat-total').textContent = formatRupiah(total);
   document.getElementById('stat-count').textContent = monthly.length;
+
+  ['Suami','Istri','Anak'].forEach(a => {
+    const filtered = monthly.filter(t => t.anggota === a);
+    const sum = filtered.reduce((s, t) => s + parseFloat(t.nominal || 0), 0);
+    const key = a.toLowerCase();
+    document.getElementById('bd-' + key).textContent = formatRupiah(sum);
+    document.getElementById('bd-' + key + '-count').textContent = filtered.length + ' transaksi';
+  });
 
   const banner = document.getElementById('limit-banner');
   const bannerMain = document.getElementById('banner-main');
@@ -842,32 +490,29 @@ function updateStats() {
   progressWrap.style.display = 'block';
   progressFill.style.width = pct.toFixed(1) + '%';
   statSisa.textContent = sisa > 0 ? formatRupiah(sisa) : '⚠ Melebihi';
-
   bannerMain.textContent = formatRupiah(total) + ' dari ' + formatRupiah(monthlyLimit);
-  bannerSub.textContent = pct.toFixed(1) + '% limit terpakai';
 
   if (pct >= 100) {
-    banner.classList.add('danger');
-    bannerIcon.textContent = '🚨';
+    banner.classList.add('danger'); bannerIcon.textContent = '🚨';
+    bannerSub.textContent = '🚨 Limit terlampaui! Pengeluaran melebihi ' + formatRupiah(monthlyLimit);
   } else if (pct >= 80) {
-    banner.classList.add('warning');
-    bannerIcon.textContent = '⚠️';
+    banner.classList.add('warning'); bannerIcon.textContent = '⚠️';
     bannerSub.textContent = '⚠ Hati-hati! Sudah ' + pct.toFixed(1) + '% dari limit — sisa ' + formatRupiah(sisa);
   } else {
-    banner.classList.add('safe');
-    bannerIcon.textContent = '✅';
+    banner.classList.add('safe'); bannerIcon.textContent = '✅';
     bannerSub.textContent = 'Sisa anggaran ' + formatRupiah(sisa);
   }
 }
 
-// ---- SUBMIT ----
 async function submitTransaction() {
   const nominal = parseFloat(document.getElementById('nominal').value);
-  const sumber = document.getElementById('sumber').value.trim();
+  const sumber = document.getElementById('sumber').value;
   const keterangan = document.getElementById('keterangan').value.trim();
+  const anggota = selectedAnggota;
 
   if (!nominal || nominal <= 0) return showToast('Masukkan nominal yang valid.');
   if (!sumber) return showToast('Pilih sumber pembayaran terlebih dahulu.');
+  if (!anggota) return showToast('Pilih anggota keluarga terlebih dahulu.');
   if (sumber === 'Lain-lain' && !keterangan) return showToast('Keterangan wajib diisi untuk sumber Lain-lain.');
 
   const btn = document.getElementById('btn-submit');
@@ -875,7 +520,7 @@ async function submitTransaction() {
   document.getElementById('btn-text').textContent = 'Menyimpan...';
 
   try {
-    const res = await apiCall({ action: 'addTransaction', nominal, sumber, keterangan });
+    const res = await apiCall({ action: 'addTransaction', nominal, sumber, keterangan, anggota });
     if (res.success) {
       document.getElementById('nominal').value = '';
       document.getElementById('sumber').value = '';
@@ -883,65 +528,41 @@ async function submitTransaction() {
       document.getElementById('keterangan-label').textContent = 'Keterangan';
       document.getElementById('keterangan').placeholder = 'Keterangan pengeluaran...';
       document.getElementById('keterangan').style.borderColor = '';
+      selectedAnggota = '';
+      ['suami','istri','anak'].forEach(a => document.getElementById('pill-' + a).className = 'anggota-pill');
       showToast('✓ Transaksi berhasil disimpan');
       await loadTransactions();
     } else {
       showToast('Gagal: ' + res.message);
     }
-  } catch (e) {
-    showToast('Gagal terhubung ke server.');
-  }
+  } catch(e) { showToast('Gagal terhubung ke server.'); }
 
   btn.disabled = false;
   document.getElementById('btn-text').textContent = 'Simpan Transaksi';
 }
 
-// ---- DELETE ----
 async function deleteRow(rowIndex) {
   if (!confirm('Hapus transaksi ini?')) return;
   try {
     const res = await apiCall({ action: 'deleteTransaction', rowIndex });
-    if (res.success) {
-      showToast('Transaksi dihapus');
-      await loadTransactions();
-    }
-  } catch (e) {
-    showToast('Gagal menghapus transaksi.');
-  }
+    if (res.success) { showToast('Transaksi dihapus'); await loadTransactions(); }
+  } catch(e) { showToast('Gagal menghapus transaksi.'); }
 }
 
-// ---- SETTING LIMIT ----
-function openSetting() {
-  document.getElementById('input-limit').value = monthlyLimit || '';
-  document.getElementById('modal-overlay').classList.add('open');
-}
-
-function closeSetting() {
-  document.getElementById('modal-overlay').classList.remove('open');
-}
+function openSetting() { document.getElementById('input-limit').value = monthlyLimit || ''; document.getElementById('modal-overlay').classList.add('open'); }
+function closeSetting() { document.getElementById('modal-overlay').classList.remove('open'); }
 
 async function saveLimit() {
   const val = parseFloat(document.getElementById('input-limit').value);
   if (!val || val <= 0) return showToast('Masukkan nominal limit yang valid.');
   try {
     const res = await apiCall({ action: 'setLimit', limit: val });
-    if (res.success) {
-      monthlyLimit = val;
-      updateStats();
-      closeSetting();
-      showToast('✓ Limit berhasil disimpan');
-    }
-  } catch (e) {
-    showToast('Gagal menyimpan limit.');
-  }
+    if (res.success) { monthlyLimit = val; updateStats(); closeSetting(); showToast('✓ Limit berhasil disimpan'); }
+  } catch(e) { showToast('Gagal menyimpan limit.'); }
 }
 
-// Close modal on overlay click
-document.getElementById('modal-overlay').addEventListener('click', function(e) {
-  if (e.target === this) closeSetting();
-});
+document.getElementById('modal-overlay').addEventListener('click', function(e) { if (e.target === this) closeSetting(); });
 
-// ---- TOAST ----
 let toastTimer;
 function showToast(msg) {
   const el = document.getElementById('toast');
@@ -951,12 +572,9 @@ function showToast(msg) {
   toastTimer = setTimeout(() => el.classList.remove('show'), 2800);
 }
 
-// ---- SERVICE WORKER ----
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/domi-keuangan/sw.js')
-      .then(() => console.log('SW registered'))
-      .catch(e => console.log('SW error:', e));
+    navigator.serviceWorker.register('/domi-keuangan/sw.js').catch(e => console.log('SW error:', e));
   });
 }
 </script>
